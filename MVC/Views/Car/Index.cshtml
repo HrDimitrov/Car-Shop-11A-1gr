@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MVC.Models.Car>
+
+@{
+    ViewBag.Title = "Списък с коли";
+}
+
+<h2>Списък с коли</h2>
+
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create", "Cars")">Добави нова кола</a>
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th>Марка</th>
+            <th>Модел</th>
+            <th>Година</th>
+            <th>Цвят</th>
+            <th>Цена</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>@car.Brand</td>
+                <td>@car.Model</td>
+                <td>@car.Year</td>
+                <td>@car.Price.ToString("C")</td>
+                <td>
+                    <a class="btn btn-sm btn-info" href="@Url.Action("Details", "Cars", new { id = car.Id })">Детайли</a>
+                    <a class="btn btn-sm btn-warning" href="@Url.Action("Edit", "Cars", new { id = car.Id })">Редактирай</a>
+                    <a class="btn btn-sm btn-danger" href="@Url.Action("Delete", "Cars", new { id = car.Id })">Изтрий</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
