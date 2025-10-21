@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MVC.Models;
 
 namespace MVC.Controllers
 {
@@ -6,7 +7,29 @@ namespace MVC.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var cars = new List<Car>()
+            {
+                new Car 
+                {
+                    Id = 1,
+                    Brand = "Toyota",
+                    Model = "Camry",
+                    Year = 2020,
+                    FuelType = "Gasoline",
+                    Price = 24000m
+                },
+                new Car
+                {
+                    Id = 2,
+                    Brand = "Toyota",
+                    Model = "Corolla",
+                    Year = 2020,
+                    FuelType = "Gasoline",
+                    Price = 25000m
+                },
+            };
+
+            return View(cars);
         }
     }
 }
